@@ -1,9 +1,21 @@
+import React from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";_
+
+import { SecondarButton } from "../atoms/button/SecondarButton";
 
 export const Top = () => {
+    const history = useHistory();
+
+    const onClickAdmin = () => history.push({ pathname: "/users", state: { isAdmin: true } });
+    const onClickGeneral = () => ({ pathname: "/users", state: { isAdmin: false } });
     return (
         <Scontainer>
             <h2>Topページです</h2>
+            <SecondarButton onClick={onClickAdmin}>管理者ユーザー</SecondarButton>
+            <br />
+            <br />
+            <SecondarButton onClick={onClickGeneral}>一般ユーザー</SecondarButton>
         </Scontainer>
     )
 }
