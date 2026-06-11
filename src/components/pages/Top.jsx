@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";_
+import { useSetRecoilState } from "recoil";
 
 import { SecondarButton } from "../atoms/button/SecondarButton";
-import { UserContext } from "../../providers/UserProvider";
+// import { UserContext } from "../../providers/UserProvider";
+import { userState } from "../../store/userState";
 
 export const Top = () => {
     const history = useHistory();
-    const { serUserInfo } = useContext(UserContext);
+    // const { serUserInfo } = useContext(UserContext);
+    const serUserInfo = useSetRecoilState(userState);
 
     const onClickAdmin = () => {
         setUserInfo({ isAdmin: true });
